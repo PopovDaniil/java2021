@@ -1,7 +1,9 @@
+package Pract7;
+
 import java.math.BigDecimal;
 import java.util.Scanner;
 
-public class Main
+public class Task4
 {
     public static double f(double x) {
         return Math.pow(x,3) - 4*Math.pow(x,2) + 6;
