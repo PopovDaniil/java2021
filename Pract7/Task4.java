@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class Task4
 {
     public static double f(double x) {
-        return Math.pow(x,3) - 4*Math.pow(x,2) + 6;
+        return Math.pow(x,3) - 4*Math.pow(x,2) + x + 6;
     }
     public static double f1(double x) {
         return 3*Math.pow(x,2) - 8*x + 1;
@@ -24,6 +24,22 @@ public class Task4
         
         return x - f(x)/f1(x);
     }
+
+	public static double x_div2(double a, double b, double e) {
+		while (b - a > e) {
+			double c = (a + b) / 2;
+			if (f(a) * f(c) < 0) {
+				b = c;
+			} else {
+				if (f(a) * f(c) > 0) {
+					a = c;
+				} else {
+					return c;
+				}
+			}
+		}
+		return (a + b) / 2;
+	}
     
 	public static void main(String[] args) {
 		Scanner in = new Scanner(System.in);
@@ -33,8 +49,8 @@ public class Task4
 		double e = in.nextDouble();
 		
 		System.out.print("Введите количество корней: ");
-		int kol = in.nextInt();
-		double xArray[] = new double[kol+1];
+		int kol = in.nextInt()+1;
+		double xArray[] = new double[kol-1];
 		int find;
 		double x, y1, y2;
 		double h = (b - a) / kol;
@@ -48,9 +64,9 @@ public class Task4
     		    y2 = f(x + h);
     		    
     		    if (y1 * y2 <= 0) {
-    		        x = x_newton(x,e);
+    		        //x = x_newton(x,e);
+					x = x_div2(x, x + h, e);
     		        xArray[find] = x;
-    		        System.out.println(find + " " + x);
     		        find++;
     		    }
     		    x += h;
