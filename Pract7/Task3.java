@@ -14,10 +14,16 @@ public class Task3 {
             input(++pos);
         }
     }
+    public static void output(int pos) {
+        if (pos < arr.length) {
+            System.out.println(pos+1 +" число: " + arr[pos]);
+            output(++pos);
+        }
+    }
 
     public static void main(String[] args) {
         arr = new int[5];
         input(0);
-        System.out.println(arr[3]);
+        output(0);
     }
 }
